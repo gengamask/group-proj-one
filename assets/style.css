@@ -1,6 +1,16 @@
+#dropdownMenu {
+  align-self :flex-end ;
+  margin-left: 150px;
+}
+
+nav {
+  Display:flex;
+  flex-direction: row;
+}
+
 .roadimage{
-    margin: 10px 0 0 10px;
-    height: 200px;
-    width: 600px;
+   margin: 10px 0 0 10px;
+   height: 200px;
+   width: 600px;
 }
 
