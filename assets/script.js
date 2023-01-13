@@ -9,7 +9,21 @@
 var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
+var wxArray = [];
 
+function addWxObjectToArray(iconCode, temp, wind, humidity){
+   
+    locationWx={
+        iconCode: iconCode,
+        temp: temp,
+        wind: wind,
+        humiditiy: humidity
+    }
+    console.log(locationWx);
+    wxArray.push(locationWx);
+    console.log(wxArray);
+}
+//addWxObjectToArray("o4h", "245", "020@10", "70%");
 
 function getWeather(lon, lat) {
     lon = lon;
@@ -22,9 +36,17 @@ function getWeather(lon, lat) {
             return response.json();
         })
         .then(function (data){
+            console.log(data);
+            //icon code, temp, wind, humidity
             console.log(data.main.temp);
-            console.log(data.weather[0]);
+            temp = data.main.temp
+            console.log(data.wind.speed);
+            wind = data.wind.speed
             console.log(data.weather[0].icon);
+            wxIcon = data.weather[0].icon
+            console.log(data.main.humidity);
+            humidity = data.main.humidity
+            addWxObjectToArray(wxIcon, temp, wind, humidity);
         })
 }
 
