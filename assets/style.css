@@ -15,11 +15,8 @@ nav {
    width: 600px;
 }
 
-#map1{
-    height: 200px;
-    width: 200px;
-}
-#map2{
+/* size of the maps */
+#map1, #map2, #map3, #map4, #map5{
     height: 200px;
     width: 200px;
 }
