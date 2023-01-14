@@ -9,50 +9,65 @@
 var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
-var wxArray = [];
+var units;
 
-function addWxObjectToArray(iconCode, temp, wind, humidity){
-   
-    locationWx={
-        iconCode: iconCode,
-        temp: temp,
-        wind: wind,
-        humiditiy: humidity
-    }
-    console.log(locationWx);
-    wxArray.push(locationWx);
-    console.log(wxArray);
-}
-//addWxObjectToArray("o4h", "245", "020@10", "70%");
-
-function getWeather(lon, lat) {
-    lon = lon;
+function getWeather(lat, lon, cardNumber) {
     lat = lat;
+    lon = lon;
+    units = 'imperial';
+    var temp;
+    var wind;
+    var wxIcon;
+    var humidity;
+    var time;
 
-    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
 
     fetch(requestUrl)
         .then(function (response) {
-            return response.json();
+          if(response.ok){
+            response.json().then(function(data){
+              //icon code, temp, wind, humidity
+              temp = data.main.temp;
+              wind = data.wind.speed;
+              wxIcon = data.weather[0].icon;
+              humidity = data.main.humidity;
+              time = data.dt;
+              displayWeather(wxIcon, temp, wind, humidity, time, cardNumber);
+            });
+          } else{
+            alert('Error: '+ response.statusText);
+          }
+
         })
-        .then(function (data){
-            console.log(data);
-            //icon code, temp, wind, humidity
-            console.log(data.main.temp);
-            temp = data.main.temp
-            console.log(data.wind.speed);
-            wind = data.wind.speed
-            console.log(data.weather[0].icon);
-            wxIcon = data.weather[0].icon
-            console.log(data.main.humidity);
-            humidity = data.main.humidity
-            addWxObjectToArray(wxIcon, temp, wind, humidity);
+        .catch(function(error){
+          alert('Unable to connect to openweathermap API');
         })
 }
+getWeather(35.4667, -83.9203, 1);
 
-getWeather(35.4667, -83.9203);
 
+// function displayWeatherIcon(){
 
+// }
+
+function displayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcTime, cardNumber){
+  var mark = dayjs.unix(funcTime).format('MMM D, YYYY'); 
+  wxEl = document.querySelector(`#wx-${cardNumber}`);
+    wxDateP = document.createElement('p');
+    wxTempP = document.createElement('p');
+    wxWindP = document.createElement('p');
+    wxHumP = document.createElement('p');
+    wxDateP.innerHTML = `${mark}`;
+    wxTempP.innerHTML = `Temp: ${funcTemp} °F`;
+    wxWindP.innerHTML = `Wind: ${funcWind} MPH`;
+    wxHumP.innerHTML = `Humidity: ${funcHumidity} %`;
+    //console.log(wxDateP);
+    wxEl.appendChild(wxDateP);
+    wxEl.appendChild(wxTempP);
+    wxEl.appendChild(wxWindP);
+    wxEl.appendChild(wxHumP);
+};
 
 
 //create getThisMap() to pull map data
