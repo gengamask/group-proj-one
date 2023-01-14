@@ -60,28 +60,63 @@ getWeather(35.4667, -83.9203);
 //create function and call function with console log at the minimum
 //ideally link function to the card
 
+//map indicator
+let map1, map2, map3, map4, map5;
 
-let map;
-let map2;
-
+// function that uses google maps api and displays the map.
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map1"), {
-    center: { lat: 35.46708705310899, lng: -83.92043416136879 },
+    // Key West
+    map1 = new google.maps.Map(document.getElementById("map1"), {
+    center: { lat: 25.196361728587775, lng: -80.41343973263618 },
     zoom: 8,
   });
   new google.maps.Marker({
-    position: { lat: 35.46708705310899, lng: -83.92043416136879 },
-    map: map,
+    position: { lat: 25.196361728587775, lng: -80.41343973263618 },
+    map: map1,
     label:"A",
     title: "Tail of the Dragon",
   })
+    //LightHouse Trail
     map2 = new google.maps.Map(document.getElementById("map2"), {
-    center: { lat: 34.74042959585908, lng: -83.93676926931562 },
+    center: { lat: 34.94753084095934, lng: -101.6887235458197 },
     zoom: 8,
   }); 
   new google.maps.Marker({
-    position: { lat: 34.74042959585908, lng: -83.93676926931562 },
+    position: { lat: 34.94753084095934, lng: -101.6887235458197 },
     map: map2,
+    label:"A",
+    title: "Blood Mountain",
+  })
+    //Gulfport Seenic Byway
+  map3 = new google.maps.Map(document.getElementById("map3"), {
+    center: { lat: 30.38956102702961, lng: -89.00039092773201 },
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat: 30.38956102702961, lng: -89.00039092773201 },
+    map: map3,
+    label:"A",
+    title: "Blood Mountain",
+  })
+  // Talladega Scenic Drive
+  map4 = new google.maps.Map(document.getElementById("map4"), {
+    center: { lat: 33.526130306735205, lng: -85.74859794538455 },
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat: 33.526130306735205, lng: -85.74859794538455 },
+    map: map4,
+    label:"A",
+    title: "Blood Mountain",
+  })
+  // The Great River Road
+  map5 = new google.maps.Map(document.getElementById("map5"), {
+    center: { lat: 30.207392650804636, lng: -90.94551441746164 },
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat: 30.207392650804636, lng: -90.94551441746164 },
+    map: map5,
     label:"A",
     title: "Blood Mountain",
   })
