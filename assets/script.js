@@ -39,7 +39,6 @@ function getWeather(lat, lon, cardNumber) {
         .then(function (response) {
           if(response.ok){
             response.json().then(function(data){
-              console.log(data);
               //get new day data at 0(tomorrow), 8 (day+1), 16 (day+2),
               //temp, wind, wxIcon, humidity, dtg
               temp1 = data.list[0].main.temp;
@@ -77,9 +76,12 @@ getWeather(33.5261, -85.7485, 4);
 getWeather(30.2073, -90.9455, 5);
 
 
-// function displayWeatherIcon(){
+function displayWeatherIcon(appendEl, iconCode){
+  var imgEl = document.createElement("img");
+  imgEl.src = `http://openweathermap.org/img/wn/${iconCode}.png`
+  appendEl.appendChild(imgEl);
+}
 
-// }
 function displayDayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcWhen){
   var mark = funcWhen;
   wxDateP = document.createElement('p');
@@ -87,8 +89,8 @@ function displayDayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcWhen
   wxTempP = document.createElement('p');
   wxWindP = document.createElement('p');
   wxHumP = document.createElement('p');
-  wxDateP.innerHTML = `${mark}`;
-  wxIconP.innerHTML = `${functIcon}`
+  wxDateP.innerHTML = `${dayjs(mark).format('ddd, D MMM')}`;
+  displayWeatherIcon(wxIconP, functIcon);
   wxTempP.innerHTML = `Temp: ${funcTemp} °F`;
   wxWindP.innerHTML = `Wind: ${funcWind} MPH`;
   wxHumP.innerHTML = `Humidity: ${funcHumidity} %`;
@@ -97,28 +99,31 @@ function displayDayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcWhen
 }
 
 function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhen1, functIcon2, funcTemp2, funcWind2, funcHumidity2, funcWhen2, functIcon3, funcTemp3, funcWind3, funcHumidity3, funcWhen3, cardNumber){
-  wxEl = document.querySelector(`#wx-${cardNumber}`);
+  wxEla = document.querySelector(`#wx-${cardNumber}a`);
+  wxElb = document.querySelector(`#wx-${cardNumber}b`);
+  wxElc = document.querySelector(`#wx-${cardNumber}c`);
+  console.log(wxEla);
   wxDay1Div = document.createElement('div');
   wxDay2Div = document.createElement('div');
   wxDay3Div = document.createElement('div');
-  wxDay1Div.classList.add('col');
-  wxDay2Div.classList.add('col');
-  wxDay3Div.classList.add('col');
-  wxEl.appendChild(wxDay1Div);
+  wxDay1Div.classList.add('card-body');
+  wxDay2Div.classList.add('card-body');
+  wxDay3Div.classList.add('card-body');
+  wxEla.appendChild(wxDay1Div);
   displayDayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhen1);
   wxDay1Div.appendChild(wxDateP);
   wxDay1Div.appendChild(wxIconP);
   wxDay1Div.appendChild(wxTempP);
   wxDay1Div.appendChild(wxWindP);
   wxDay1Div.appendChild(wxHumP);
-  wxEl.appendChild(wxDay2Div);
+  wxElb.appendChild(wxDay2Div);
   displayDayWeather(functIcon2, funcTemp2, funcWind2, funcHumidity2, funcWhen2);
   wxDay2Div.appendChild(wxDateP);
   wxDay2Div.appendChild(wxIconP);
   wxDay2Div.appendChild(wxTempP);
   wxDay2Div.appendChild(wxWindP);
   wxDay2Div.appendChild(wxHumP);
-  wxEl.appendChild(wxDay3Div);
+  wxElc.appendChild(wxDay3Div);
   displayDayWeather(functIcon3, funcTemp3, funcWind3, funcHumidity3, funcWhen3);
   wxDay3Div.appendChild(wxDateP);
   wxDay3Div.appendChild(wxIconP);
