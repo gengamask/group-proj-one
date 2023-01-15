@@ -73,6 +73,8 @@ function getWeather(lat, lon, cardNumber) {
 getWeather(25.1963, -80.4134, 1);
 getWeather(34.9475, -101.68, 2);
 getWeather(30.3895, -89.0003, 3);
+getWeather(33.5261, -85.7485, 4);
+getWeather(30.2073, -90.9455, 5);
 
 
 // function displayWeatherIcon(){
