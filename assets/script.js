@@ -10,6 +10,19 @@ var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
 var units;
+var searchButton = document.querySelector('#searchActivate');
+var searchInput = document.querySelector('#theSearch')
+
+searchButton.addEventListener('click', function(event){
+  console.log("PIKACHUUUU");
+  console.log(searchInput.value);
+  saveToLocalStorage(searchInput.value);
+  event.preventDefault();
+})
+
+function saveToLocalStorage(searchValue){
+  localStorage.setItem("search", JSON.stringify(searchValue));
+}
 
 function getWeather(lat, lon, cardNumber) {
     lat = lat;
@@ -41,6 +54,7 @@ function getWeather(lat, lon, cardNumber) {
             response.json().then(function(data){
               //get new day data at 0(tomorrow), 8 (day+1), 16 (day+2),
               //temp, wind, wxIcon, humidity, dtg
+              //console.log(data);
               temp1 = data.list[0].main.temp;
               wind1 = data.list[0].wind.speed;
               wxIcon1 = data.list[0].weather[0].icon;
@@ -102,7 +116,6 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
   wxEla = document.querySelector(`#wx-${cardNumber}a`);
   wxElb = document.querySelector(`#wx-${cardNumber}b`);
   wxElc = document.querySelector(`#wx-${cardNumber}c`);
-  console.log(wxEla);
   wxDay1Div = document.createElement('div');
   wxDay2Div = document.createElement('div');
   wxDay3Div = document.createElement('div');
