@@ -16,8 +16,13 @@ var searchInput = document.querySelector('#theSearch')
 searchButton.addEventListener('click', function(event){
   console.log("PIKACHUUUU");
   console.log(searchInput.value);
+  saveToLocalStorage(searchInput.value);
   event.preventDefault();
 })
+
+function saveToLocalStorage(searchValue){
+  localStorage.setItem("search", JSON.stringify(searchValue));
+}
 
 function getWeather(lat, lon, cardNumber) {
     lat = lat;
