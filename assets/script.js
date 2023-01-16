@@ -15,6 +15,7 @@ var searchInput = document.querySelector('#theSearch')
 
 searchButton.addEventListener('click', function(event){
   console.log("PIKACHUUUU");
+  console.log(searchInput.value);
   event.preventDefault();
 })
 
