@@ -139,6 +139,7 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
 //create function and call function with console log at the minimum
 //ideally link function to the card
 
+
 //map indicator
 let map1, map2, map3, map4, map5;
 
@@ -199,4 +200,76 @@ function initMap() {
     label:"A",
     title: "Blood Mountain",
   })
+}
+
+
+/*<---------------------Bertin's Code ----------------------------------------------->>*/
+//Scenic Roads Images - Bertin
+
+//map indicator 
+let road1, road2, road3, road4, road5;
+
+getWeather(33.74831, -84.39111, 6);
+// getWeather();
+// getWeather();
+// getWeather();
+// getWeather();
+
+// function that uses google maps api and displays the map.
+function cardSet2Maps() {
+  // Atlanta Road
+  road1 = new google.maps.Map(document.getElementById("road1"), {
+  center: { lat: 25.196361728587775, lng: -80.41343973263618},
+  zoom: 8,
+});
+new google.maps.Marker({
+  position: { lat: 25.196361728587775, lng: -80.41343973263618},
+  map: road1,
+  label:"B",
+  title: "A",
+})
+  //Blue Ridge
+  road2 = new google.maps.Map(document.getElementById("road2"), {
+  center: { lat: 34.94753084095934, lng: -101.6887235458197 },
+  zoom: 8,
+}); 
+new google.maps.Marker({
+  position: { lat: 34.94753084095934, lng: -101.6887235458197 },
+  map: road2,
+  label:"B",
+  title: "B",
+})
+  //Open Road
+road3 = new google.maps.Map(document.getElementById("road3"), {
+  center: { lat: 30.38956102702961, lng: -89.00039092773201 },
+  zoom: 8,
+}); 
+new google.maps.Marker({
+  position: { lat: 30.38956102702961, lng: -89.00039092773201 },
+  map: road3,
+  label:"B",
+  title: "C",
+})
+//Red Rock
+road4 = new google.maps.Map(document.getElementById("road4"), {
+  center: { lat: 33.526130306735205, lng: -85.74859794538455 },
+  zoom: 8,
+}); 
+new google.maps.Marker({
+  position: { lat: 33.526130306735205, lng: -85.74859794538455 },
+  map: road4,
+  label:"B",
+  title: "D",
+})
+//Scenic Img
+road5 = new google.maps.Map(document.getElementById("road5"), {
+  center: { lat: 30.207392650804636, lng: -90.94551441746164 },
+  zoom: 8,
+}); 
+new google.maps.Marker({
+  position: { lat: 30.207392650804636, lng: -90.94551441746164 },
+  map: road5,
+  label:"B",
+  title: "E",
+})
 }
