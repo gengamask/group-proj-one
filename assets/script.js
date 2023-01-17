@@ -31,7 +31,7 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
-  
+
 }
 
 function getWeather(lat, lon, cardNumber) {
