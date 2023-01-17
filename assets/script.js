@@ -16,10 +16,12 @@ var homeButton = document.querySelector('#homeButton');
 
 searchButton.addEventListener('click', function(event){
   event.preventDefault();
-  saveToLocalStorage(searchInput.value);
-  getStates();
+  if(getStates()){
+    saveToLocalStorage(searchInput.value)
+  };
+  
   event.preventDefault();
-  window.location.reload();
+  //window.location.reload();
 })
 
 function saveToLocalStorage(searchValue){
@@ -308,7 +310,7 @@ function getStates(){
     txEl.style.display = 'none';
     return true;
   }else if(a !== states){
-    alert("Wrong input, try again.")
+    alert("Please use two letter state input, try again.")
     return false;
   }
 }
