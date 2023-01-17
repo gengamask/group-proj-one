@@ -1,3 +1,4 @@
+
 //Get API Keys for Maps and Weather
 // read API data for WX and Map and display on each card based on location
 
@@ -10,6 +11,29 @@ var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
 var units;
+var searchButton = document.querySelector('#searchActivate');
+var searchInput = document.querySelector('#theSearch')
+
+searchButton.addEventListener('click', function(event){
+  console.log("PIKACHUUUU");
+  console.log(searchInput.value);
+  saveToLocalStorage(searchInput.value);
+  event.preventDefault();
+})
+
+function saveToLocalStorage(searchValue){
+  var number = JSON.parse(localStorage.getItem("searchNumber"));
+  if(number !== undefined && number !== null){
+    number++;
+    localStorage.setItem("searchNumber", JSON.stringify(number));
+    localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
+  } else{
+    number = 1;
+    localStorage.setItem("searchNumber", JSON.stringify(number));
+    localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
+  }
+
+}
 
 function getWeather(lat, lon, cardNumber) {
     lat = lat;
@@ -41,6 +65,7 @@ function getWeather(lat, lon, cardNumber) {
             response.json().then(function(data){
               //get new day data at 0(tomorrow), 8 (day+1), 16 (day+2),
               //temp, wind, wxIcon, humidity, dtg
+              // console.log(data);
               temp1 = data.list[0].main.temp;
               wind1 = data.list[0].wind.speed;
               wxIcon1 = data.list[0].weather[0].icon;
@@ -75,6 +100,12 @@ getWeather(30.3895, -89.0003, 3);
 getWeather(33.5261, -85.7485, 4);
 getWeather(30.2073, -90.9455, 5);
 
+getWeather(26.670876,-69.993684, 6);
+getWeather(37.644402,-65.516008, 7);
+getWeather(33.843970,-110.968545, 8);
+getWeather(33.914237,-115.298147, 9);
+getWeather(37.669940,-111.577033, 10);
+
 
 function displayWeatherIcon(appendEl, iconCode){
   var imgEl = document.createElement("img");
@@ -102,7 +133,6 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
   wxEla = document.querySelector(`#wx-${cardNumber}a`);
   wxElb = document.querySelector(`#wx-${cardNumber}b`);
   wxElc = document.querySelector(`#wx-${cardNumber}c`);
-  console.log(wxEla);
   wxDay1Div = document.createElement('div');
   wxDay2Div = document.createElement('div');
   wxDay3Div = document.createElement('div');
@@ -139,9 +169,8 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
 //create function and call function with console log at the minimum
 //ideally link function to the card
 
-
 //map indicator
-let map1, map2, map3, map4, map5;
+let map1, map2, map3, map4, map5, map6, map7, map8, map9, map10;
 
 // function that uses google maps api and displays the map.
 function initMap() {
@@ -199,77 +228,62 @@ function initMap() {
     map: map5,
     label:"A",
     title: "Blood Mountain",
+  });
+  // Key West
+  map6 = new google.maps.Map(document.getElementById("map6"), {
+    center: { lat: 25.196361728587775, lng: -80.41343973263618 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: {lat: 25.196361728587775, lng : -80.41343973263618 },
+    map: map6,
+    label:"A",
+    title: "Tail of the Dragon",
+})
+    //Atlanta road
+    map7 = new google.maps.Map(document.getElementById("map7"), {
+    center: { lat:26.670876 , lng:-69.993684},
+    zoom: 8,
+  }); 
+  
+  new google.maps.Marker({
+    position: { lat:26.670876  , lng:-69.993684},
+    map: map7,
+    label:"A",
+    title: "Blood Mountain",
   })
-}
+    //Open road
+  map8 = new google.maps.Map(document.getElementById("map8"), {
+    center: { lat:37.644402, lng:-65.516008},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat:37.644402, lng:-65.516008 },
+    map: map8,
+    label:"A",
+    title: "Blood Mountain",
+  })
+  // Tall pine
+  map9 = new google.maps.Map(document.getElementById("map9"), {
+    center: { lat:33.843970 , lng: -65.516008},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat: 33.843970, lng: -110.968545},
+    map: map9,
+    label:"A",
+    title: "Blood Mountain",
+  })
 
-
-/*<---------------------Bertin's Code ----------------------------------------------->>*/
-//Scenic Roads Images - Bertin
-
-//map indicator 
-let road1, road2, road3, road4, road5;
-
-getWeather(33.74831, -84.39111, 6);
-// getWeather();
-// getWeather();
-// getWeather();
-// getWeather();
-
-// function that uses google maps api and displays the map.
-function cardSet2Maps() {
-  // Atlanta Road
-  road1 = new google.maps.Map(document.getElementById("road1"), {
-  center: { lat: 25.196361728587775, lng: -80.41343973263618},
-  zoom: 8,
-});
-new google.maps.Marker({
-  position: { lat: 25.196361728587775, lng: -80.41343973263618},
-  map: road1,
-  label:"B",
-  title: "A",
-})
-  //Blue Ridge
-  road2 = new google.maps.Map(document.getElementById("road2"), {
-  center: { lat: 34.94753084095934, lng: -101.6887235458197 },
-  zoom: 8,
-}); 
-new google.maps.Marker({
-  position: { lat: 34.94753084095934, lng: -101.6887235458197 },
-  map: road2,
-  label:"B",
-  title: "B",
-})
-  //Open Road
-road3 = new google.maps.Map(document.getElementById("road3"), {
-  center: { lat: 30.38956102702961, lng: -89.00039092773201 },
-  zoom: 8,
-}); 
-new google.maps.Marker({
-  position: { lat: 30.38956102702961, lng: -89.00039092773201 },
-  map: road3,
-  label:"B",
-  title: "C",
-})
-//Red Rock
-road4 = new google.maps.Map(document.getElementById("road4"), {
-  center: { lat: 33.526130306735205, lng: -85.74859794538455 },
-  zoom: 8,
-}); 
-new google.maps.Marker({
-  position: { lat: 33.526130306735205, lng: -85.74859794538455 },
-  map: road4,
-  label:"B",
-  title: "D",
-})
-//Scenic Img
-road5 = new google.maps.Map(document.getElementById("road5"), {
-  center: { lat: 30.207392650804636, lng: -90.94551441746164 },
-  zoom: 8,
-}); 
-new google.maps.Marker({
-  position: { lat: 30.207392650804636, lng: -90.94551441746164 },
-  map: road5,
-  label:"B",
-  title: "E",
-})
+  // Utah - why 12
+  map10 = new google.maps.Map(document.getElementById("map10"), {
+    center: { lat: 33.914237, lng: -115.298147},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat:33.914237 , lng:-115.298147},
+    map: map10,
+    label:"A",
+    title: "Blood Mountain",
+  })
 }
