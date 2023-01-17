@@ -16,7 +16,9 @@ var searchInput = document.querySelector('#theSearch')
 searchButton.addEventListener('click', function(event){
   console.log("PIKACHUUUU");
   console.log(searchInput.value);
+  console.log(searchInput.value);
   saveToLocalStorage(searchInput.value);
+  getStates();
   event.preventDefault();
 })
 
@@ -26,7 +28,8 @@ function saveToLocalStorage(searchValue){
     number++;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
-  } else{
+  } 
+  else{
     number = 1;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
@@ -222,4 +225,70 @@ function initMap() {
     label:"A",
     title: "Blood Mountain",
   })
+}
+
+// lists of states
+const states = ['AK', 'AL', 'AR', 'AS', 'AZ', 
+'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
+'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 
+'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 
+'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 
+'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 
+'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 
+'TN', 'TX', 'UM', 'UT', 'VA', 'VI', 
+'VT', 'WA', 'WI', 'WV', 'WY'
+];
+
+// value for the entier card contaienr
+let flEl = document.querySelector("#fl");
+let txEl = document.querySelector("#tx");
+let msEl = document.querySelector("#ms");
+let alEl = document.querySelector("#al");
+let laEl = document.querySelector("#la");
+
+// function that display only the card for the specific state.
+function getStates(){
+  a = searchInput.value;
+  if(a === states[10]){
+    flEl.style.display = 'flex';
+    txEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }else if(a === states[47]){
+    txEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[28]){
+    msEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    txEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[1]){
+    alEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    txEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[20]){
+    laEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    return true;
+  }else if(a !== states){
+    alert("Wrong input, try again.")
+    return false;
+  }
 }
