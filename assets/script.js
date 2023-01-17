@@ -11,15 +11,15 @@ var lon;
 var lat;
 var units;
 var searchButton = document.querySelector('#searchActivate');
-var searchInput = document.querySelector('#theSearch')
+var searchInput = document.querySelector('#theSearch');
+var homeButton = document.querySelector('#homeButton');
 
 searchButton.addEventListener('click', function(event){
-  console.log("PIKACHUUUU");
-  console.log(searchInput.value);
-  console.log(searchInput.value);
+  event.preventDefault();
   saveToLocalStorage(searchInput.value);
   getStates();
   event.preventDefault();
+  window.location.reload();
 })
 
 function saveToLocalStorage(searchValue){
@@ -34,7 +34,22 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
+}
 
+function retrieveLocalStorage(){
+  var number = JSON.parse(localStorage.getItem("searchNumber"));
+  dropDownEl = document.querySelector('#dropDown');
+  if(number !== undefined && number !== null){
+    for(var i = 1; i<=number; i++){
+      liEl = document.createElement('li');
+      liEl.classList.add('nav-item');
+      aEl = document.createElement('a');
+      aEl.classList.add('nav-link', 'fs-4')
+      aEl.innerHTML = JSON.parse(localStorage.getItem(`search${i}`));
+      dropDownEl.appendChild(liEl);
+      liEl.appendChild(aEl);
+    }
+  }
 }
 
 function getWeather(lat, lon, cardNumber) {
@@ -96,11 +111,16 @@ function getWeather(lat, lon, cardNumber) {
           alert('Unable to connect to openweathermap API');
         })
 }
-getWeather(25.1963, -80.4134, 1);
-getWeather(34.9475, -101.68, 2);
-getWeather(30.3895, -89.0003, 3);
-getWeather(33.5261, -85.7485, 4);
-getWeather(30.2073, -90.9455, 5);
+
+function init(){
+  getWeather(25.1963, -80.4134, 1);
+  getWeather(34.9475, -101.68, 2);
+  getWeather(30.3895, -89.0003, 3);
+  getWeather(33.5261, -85.7485, 4);
+  getWeather(30.2073, -90.9455, 5);
+  retrieveLocalStorage();
+}
+
 
 
 function displayWeatherIcon(appendEl, iconCode){
@@ -292,3 +312,4 @@ function getStates(){
     return false;
   }
 }
+init();
