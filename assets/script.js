@@ -21,7 +21,21 @@ searchButton.addEventListener('click', function(event){
 })
 
 function saveToLocalStorage(searchValue){
-  localStorage.setItem("search", JSON.stringify(searchValue));
+  var number = JSON.parse(localStorage.getItem("searchNumber"));
+  if(number !== undefined && number !== null){
+    number++;
+    localStorage.setItem("searchNumber", JSON.stringify(number));
+    localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
+  } else{
+    number = 1;
+    localStorage.setItem("searchNumber", JSON.stringify(number));
+    localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
+  }
+  
+}
+
+function retrieveLocalStorage(){
+
 }
 
 function getWeather(lat, lon, cardNumber) {
