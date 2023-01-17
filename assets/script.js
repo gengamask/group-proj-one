@@ -28,12 +28,12 @@ function saveToLocalStorage(searchValue){
     number++;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
-  } else{
+  } 
+  else{
     number = 1;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
-  
 }
 
 function getWeather(lat, lon, cardNumber) {
@@ -254,12 +254,14 @@ function getStates(){
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    return true;
   }else if(a === states[47]){
     txEl.style.display = 'flex';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    return true;
   }
   else if(a === states[28]){
     msEl.style.display = 'flex';
@@ -267,6 +269,7 @@ function getStates(){
     txEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    return true;
   }
   else if(a === states[1]){
     alEl.style.display = 'flex';
@@ -274,6 +277,7 @@ function getStates(){
     msEl.style.display = 'none';
     txEl.style.display = 'none';
     laEl.style.display = 'none';
+    return true;
   }
   else if(a === states[20]){
     laEl.style.display = 'flex';
@@ -281,7 +285,9 @@ function getStates(){
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     txEl.style.display = 'none';
-  }else{
+    return true;
+  }else if(a !== states){
     alert("Wrong input, try again.")
+    return false;
   }
 }
