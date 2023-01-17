@@ -1,3 +1,4 @@
+
 //Get API Keys for Maps and Weather
 // read API data for WX and Map and display on each card based on location
 
@@ -34,8 +35,7 @@ function saveToLocalStorage(searchValue){
     number++;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
-  } 
-  else{
+  } else{
     number = 1;
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
@@ -128,6 +128,12 @@ function init(){
 }
 
 
+getWeather(26.670876,-69.993684, 6);
+getWeather(37.644402,-65.516008, 7);
+getWeather(33.843970,-110.968545, 8);
+getWeather(33.914237,-115.298147, 9);
+getWeather(37.669940,-111.577033, 10);
+
 
 function displayWeatherIcon(appendEl, iconCode){
   var imgEl = document.createElement("img");
@@ -192,7 +198,7 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
 //ideally link function to the card
 
 //map indicator
-let map1, map2, map3, map4, map5;
+let map1, map2, map3, map4, map5, map6, map7, map8, map9, map10;
 
 // function that uses google maps api and displays the map.
 function initMap() {
@@ -248,6 +254,63 @@ function initMap() {
   new google.maps.Marker({
     position: { lat: 30.207392650804636, lng: -90.94551441746164 },
     map: map5,
+    label:"A",
+    title: "Blood Mountain",
+  });
+  // Key West
+  map6 = new google.maps.Map(document.getElementById("map6"), {
+    center: { lat: 25.196361728587775, lng: -80.41343973263618 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: {lat: 25.196361728587775, lng : -80.41343973263618 },
+    map: map6,
+    label:"A",
+    title: "Tail of the Dragon",
+})
+    //Atlanta road
+    map7 = new google.maps.Map(document.getElementById("map7"), {
+    center: { lat:26.670876 , lng:-69.993684},
+    zoom: 8,
+  }); 
+  
+  new google.maps.Marker({
+    position: { lat:26.670876  , lng:-69.993684},
+    map: map7,
+    label:"A",
+    title: "Blood Mountain",
+  })
+    //Open road
+  map8 = new google.maps.Map(document.getElementById("map8"), {
+    center: { lat:37.644402, lng:-65.516008},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat:37.644402, lng:-65.516008 },
+    map: map8,
+    label:"A",
+    title: "Blood Mountain",
+  })
+  // Tall pine
+  map9 = new google.maps.Map(document.getElementById("map9"), {
+    center: { lat:33.843970 , lng: -65.516008},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat: 33.843970, lng: -110.968545},
+    map: map9,
+    label:"A",
+    title: "Blood Mountain",
+  })
+
+  // Utah - why 12
+  map10 = new google.maps.Map(document.getElementById("map10"), {
+    center: { lat: 33.914237, lng: -115.298147},
+    zoom: 8,
+  }); 
+  new google.maps.Marker({
+    position: { lat:33.914237 , lng:-115.298147},
+    map: map10,
     label:"A",
     title: "Blood Mountain",
   })
