@@ -6,18 +6,19 @@
 //create function and call function with console log at the minimum
 //ideally link function to the card
 
-retrieveLocalStorage();
 var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
 var units;
 var searchButton = document.querySelector('#searchActivate');
-var searchInput = document.querySelector('#theSearch')
+var searchInput = document.querySelector('#theSearch');
+var homeButton = document.querySelector('#homeButton');
 
 searchButton.addEventListener('click', function(event){
   event.preventDefault();
   saveToLocalStorage(searchInput.value);
   event.preventDefault();
+  window.location.reload();
 })
 
 function saveToLocalStorage(searchValue){
@@ -31,7 +32,6 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
-  retrieveLocalStorage();
 }
 
 function retrieveLocalStorage(){
@@ -109,11 +109,16 @@ function getWeather(lat, lon, cardNumber) {
           alert('Unable to connect to openweathermap API');
         })
 }
-getWeather(25.1963, -80.4134, 1);
-getWeather(34.9475, -101.68, 2);
-getWeather(30.3895, -89.0003, 3);
-getWeather(33.5261, -85.7485, 4);
-getWeather(30.2073, -90.9455, 5);
+
+function init(){
+  getWeather(25.1963, -80.4134, 1);
+  getWeather(34.9475, -101.68, 2);
+  getWeather(30.3895, -89.0003, 3);
+  getWeather(33.5261, -85.7485, 4);
+  getWeather(30.2073, -90.9455, 5);
+  retrieveLocalStorage();
+}
+
 
 
 function displayWeatherIcon(appendEl, iconCode){
@@ -239,3 +244,5 @@ function initMap() {
     title: "Blood Mountain",
   })
 }
+
+init();
