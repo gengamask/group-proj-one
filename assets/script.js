@@ -12,13 +12,21 @@ var lon;
 var lat;
 var units;
 var searchButton = document.querySelector('#searchActivate');
-var searchInput = document.querySelector('#theSearch')
+var searchInput = document.querySelector('#theSearch');
+var homeButton = document.querySelector('#homeButton');
 
 searchButton.addEventListener('click', function(event){
-  console.log("PIKACHUUUU");
-  console.log(searchInput.value);
-  saveToLocalStorage(searchInput.value);
   event.preventDefault();
+  if(getStates()){
+    saveToLocalStorage(searchInput.value)
+  };
+  
+  event.preventDefault();
+  //window.location.reload();
+})
+
+homeButton.addEventListener("click", function(event){
+  window.location.reload();
 })
 
 function saveToLocalStorage(searchValue){
@@ -32,7 +40,22 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
+}
 
+function retrieveLocalStorage(){
+  var number = JSON.parse(localStorage.getItem("searchNumber"));
+  dropDownEl = document.querySelector('#dropDown');
+  if(number !== undefined && number !== null){
+    for(var i = 1; i<=number; i++){
+      liEl = document.createElement('li');
+      liEl.classList.add('nav-item');
+      var aEl = document.createElement('a');
+      aEl.classList.add('nav-link', 'fs-4', 'title');
+      aEl.innerHTML = JSON.parse(localStorage.getItem(`search${i}`));
+      dropDownEl.appendChild(liEl);
+      liEl.appendChild(aEl);
+    }
+  }
 }
 
 function getWeather(lat, lon, cardNumber) {
@@ -65,7 +88,7 @@ function getWeather(lat, lon, cardNumber) {
             response.json().then(function(data){
               //get new day data at 0(tomorrow), 8 (day+1), 16 (day+2),
               //temp, wind, wxIcon, humidity, dtg
-              // console.log(data);
+              //console.log(data);
               temp1 = data.list[0].main.temp;
               wind1 = data.list[0].wind.speed;
               wxIcon1 = data.list[0].weather[0].icon;
@@ -94,11 +117,16 @@ function getWeather(lat, lon, cardNumber) {
           alert('Unable to connect to openweathermap API');
         })
 }
-getWeather(25.1963, -80.4134, 1);
-getWeather(34.9475, -101.68, 2);
-getWeather(30.3895, -89.0003, 3);
-getWeather(33.5261, -85.7485, 4);
-getWeather(30.2073, -90.9455, 5);
+
+function init(){
+  getWeather(25.1963, -80.4134, 1);
+  getWeather(34.9475, -101.68, 2);
+  getWeather(30.3895, -89.0003, 3);
+  getWeather(33.5261, -85.7485, 4);
+  getWeather(30.2073, -90.9455, 5);
+  retrieveLocalStorage();
+}
+
 
 getWeather(26.670876,-69.993684, 6);
 getWeather(37.644402,-65.516008, 7);
@@ -287,3 +315,70 @@ function initMap() {
     title: "Blood Mountain",
   })
 }
+
+// lists of states
+const states = ['AK', 'AL', 'AR', 'AS', 'AZ', 
+'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
+'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 
+'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 
+'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 
+'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 
+'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 
+'TN', 'TX', 'UM', 'UT', 'VA', 'VI', 
+'VT', 'WA', 'WI', 'WV', 'WY'
+];
+
+// value for the entier card contaienr
+let flEl = document.querySelector("#fl");
+let txEl = document.querySelector("#tx");
+let msEl = document.querySelector("#ms");
+let alEl = document.querySelector("#al");
+let laEl = document.querySelector("#la");
+
+// function that display only the card for the specific state.
+function getStates(){
+  a = searchInput.value;
+  if(a === states[10]){
+    flEl.style.display = 'flex';
+    txEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }else if(a === states[47]){
+    txEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[28]){
+    msEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    txEl.style.display = 'none';
+    alEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[1]){
+    alEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    txEl.style.display = 'none';
+    laEl.style.display = 'none';
+    return true;
+  }
+  else if(a === states[20]){
+    laEl.style.display = 'flex';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    return true;
+  }else if(a !== states){
+    alert("Please use two letter state input, try again.")
+    return false;
+  }
+}
+init();
