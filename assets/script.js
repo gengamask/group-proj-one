@@ -24,6 +24,10 @@ searchButton.addEventListener('click', function(event){
   //window.location.reload();
 })
 
+homeButton.addEventListener("click", function(event){
+  window.location.reload();
+})
+
 function saveToLocalStorage(searchValue){
   var number = JSON.parse(localStorage.getItem("searchNumber"));
   if(number !== undefined && number !== null){
@@ -45,7 +49,7 @@ function retrieveLocalStorage(){
     for(var i = 1; i<=number; i++){
       liEl = document.createElement('li');
       liEl.classList.add('nav-item');
-      aEl = document.createElement('a');
+      var aEl = document.createElement('a');
       aEl.classList.add('nav-link', 'fs-4')
       aEl.innerHTML = JSON.parse(localStorage.getItem(`search${i}`));
       dropDownEl.appendChild(liEl);
