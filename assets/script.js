@@ -6,6 +6,7 @@
 //create function and call function with console log at the minimum
 //ideally link function to the card
 
+retrieveLocalStorage();
 var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
@@ -14,14 +15,12 @@ var searchButton = document.querySelector('#searchActivate');
 var searchInput = document.querySelector('#theSearch')
 
 searchButton.addEventListener('click', function(event){
-  console.log("PIKACHUUUU");
-  console.log(searchInput.value);
+  event.preventDefault();
   saveToLocalStorage(searchInput.value);
   event.preventDefault();
 })
 
 function saveToLocalStorage(searchValue){
-  checkInput(searchValue);
   var number = JSON.parse(localStorage.getItem("searchNumber"));
   if(number !== undefined && number !== null){
     number++;
@@ -32,11 +31,23 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem("searchNumber", JSON.stringify(number));
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
-  
+  retrieveLocalStorage();
 }
 
 function retrieveLocalStorage(){
-  
+  var number = JSON.parse(localStorage.getItem("searchNumber"));
+  dropDownEl = document.querySelector('#dropDown');
+  if(number !== undefined && number !== null){
+    for(var i = 1; i<=number; i++){
+      liEl = document.createElement('li');
+      liEl.classList.add('nav-item');
+      aEl = document.createElement('a');
+      aEl.classList.add('nav-link', 'fs-4')
+      aEl.innerHTML = JSON.parse(localStorage.getItem(`search${i}`));
+      dropDownEl.appendChild(liEl);
+      liEl.appendChild(aEl);
+    }
+  }
 }
 
 function getWeather(lat, lon, cardNumber) {
