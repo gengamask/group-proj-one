@@ -21,6 +21,7 @@ searchButton.addEventListener('click', function(event){
 })
 
 function saveToLocalStorage(searchValue){
+  checkInput(searchValue);
   var number = JSON.parse(localStorage.getItem("searchNumber"));
   if(number !== undefined && number !== null){
     number++;
@@ -35,7 +36,7 @@ function saveToLocalStorage(searchValue){
 }
 
 function retrieveLocalStorage(){
-
+  
 }
 
 function getWeather(lat, lon, cardNumber) {
