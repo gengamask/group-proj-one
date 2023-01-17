@@ -16,6 +16,7 @@ No additional installation is required to deploy this project
 - Click link to view deployed webpage: [Github Pages](https://git-vdim-hub.github.io/group-proj-one/)
 
 ![Main Page](./assets/images/screenshot.png)
+![Route Card](./assets/images/screenshot2.png)
 
 ## Credits
 
