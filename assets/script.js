@@ -254,15 +254,7 @@ function initMap() {
 }
 
 // lists of states
-const states = ['AK', 'AL', 'AR', 'AS', 'AZ', 
-'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
-'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 
-'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 
-'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 
-'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 
-'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 
-'TN', 'TX', 'UM', 'UT', 'VA', 'VI', 
-'VT', 'WA', 'WI', 'WV', 'WY'
+const states = ['FL', 'TX', 'MS', 'AL', 'LA'
 ];
 
 // value for the entier card contaienr
@@ -275,14 +267,14 @@ let laEl = document.querySelector("#la");
 // function that display only the card for the specific state.
 function getStates(){
   a = searchInput.value;
-  if(a === states[10]){
+  if(a === states[0]){
     flEl.style.display = 'flex';
     txEl.style.display = 'none';
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
     return true;
-  }else if(a === states[47]){
+  }else if(a === states[1]){
     txEl.style.display = 'flex';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
@@ -290,7 +282,7 @@ function getStates(){
     laEl.style.display = 'none';
     return true;
   }
-  else if(a === states[28]){
+  else if(a === states[2]){
     msEl.style.display = 'flex';
     flEl.style.display = 'none';
     txEl.style.display = 'none';
@@ -298,7 +290,7 @@ function getStates(){
     laEl.style.display = 'none';
     return true;
   }
-  else if(a === states[1]){
+  else if(a === states[3]){
     alEl.style.display = 'flex';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
@@ -306,7 +298,7 @@ function getStates(){
     laEl.style.display = 'none';
     return true;
   }
-  else if(a === states[20]){
+  else if(a === states[4]){
     laEl.style.display = 'flex';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
