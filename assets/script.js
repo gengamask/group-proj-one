@@ -50,7 +50,7 @@ function retrieveLocalStorage(){
       liEl = document.createElement('li');
       liEl.classList.add('nav-item');
       var aEl = document.createElement('a');
-      aEl.classList.add('nav-link', 'fs-4')
+      aEl.classList.add('nav-link', 'fs-4', 'title');
       aEl.innerHTML = JSON.parse(localStorage.getItem(`search${i}`));
       dropDownEl.appendChild(liEl);
       liEl.appendChild(aEl);
