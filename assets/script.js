@@ -414,7 +414,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }else if(a === states[1]){
     txEl.style.display = 'flex';
@@ -427,6 +427,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[2]){
@@ -444,7 +449,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[3]){
@@ -462,7 +467,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[4]){
@@ -480,7 +485,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[5]){
     laEl.style.display = 'none';
@@ -497,7 +502,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[6]){
     laEl.style.display = 'none';
@@ -514,7 +519,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[7]){
     laEl.style.display = 'none';
@@ -531,7 +536,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[8]){
     laEl.style.display = 'none';
@@ -548,7 +553,9 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
+    return true;
+  }  else if(a === states[9]){
     laEl.style.display = 'none';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
@@ -562,8 +569,8 @@ function getStates(){
     caEl.style.display = 'flex';
     ca2El.style.display = 'flex';
     ca3El.style.display = 'flex';
-    orEl.style.display = 'none';
-    azwa.style.display = 'none';
+    orEl.style.display = 'flex';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[10]){
     laEl.style.display = 'none';
@@ -580,9 +587,9 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'flex';
-    azwa.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
-  }  else if(a === states[8]){
+  }  else if(a === states[11]){
     laEl.style.display = 'none';
     flEl.style.display = 'none';
     msEl.style.display = 'none';
@@ -597,8 +604,7 @@ function getStates(){
     ca2El.style.display = 'none';
     ca3El.style.display = 'none';
     orEl.style.display = 'none';
-    azwa.style.display = 'flex';
-    return true;
+    waEl.style.display = 'flex';
     return true;
   }else if(a !== states){
     alert("Please use two letter state input, try again.")
