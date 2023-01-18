@@ -124,15 +124,21 @@ function init(){
   getWeather(30.3895, -89.0003, 3);
   getWeather(33.5261, -85.7485, 4);
   getWeather(30.2073, -90.9455, 5);
+  getWeather(26.670876,-69.993684, 6);
+  getWeather(37.644402,-65.516008, 7);
+  getWeather(33.843970,-110.968545, 8);
+  getWeather(33.914237,-115.298147, 9);
+  getWeather(37.669940,-111.577033, 10);
+  getWeather(35.04628,-114.62789,11);
+  getWeather(36.224178, -121.758074,12);
+  getWeather(39.096848,-120.032349,13);
+  getWeather(44.187126,-124.114609,14);
+  getWeather(47.9331,-123.467998128,15);
   retrieveLocalStorage();
 }
 
 
-getWeather(26.670876,-69.993684, 6);
-getWeather(37.644402,-65.516008, 7);
-getWeather(33.843970,-110.968545, 8);
-getWeather(33.914237,-115.298147, 9);
-getWeather(37.669940,-111.577033, 10);
+
 
 
 function displayWeatherIcon(appendEl, iconCode){
@@ -198,7 +204,7 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
 //ideally link function to the card
 
 //map indicator
-let map1, map2, map3, map4, map5, map6, map7, map8, map9, map10;
+let map1, map2, map3, map4, map5, map6, map7, map8, map9, map10, map11, map12,map13,map14,map15 ;
 
 // function that uses google maps api and displays the map.
 function initMap() {
@@ -313,11 +319,65 @@ function initMap() {
     label:"A",
     title: "Utah HWY 12",
   })
-}
+  map11 = new google.maps.Map(document.getElementById("map11"), {
+    center: { lat: 35.04628, lng: -114.62789 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: { lat: 35.04628, lng: -114.62789 },
+    map: map11,
+    label:"A",
+    title: "Drive through the Mojave",
+})
 
+  //  CA-1 To Big Sur 12
+  map12 = new google.maps.Map(document.getElementById("map12"), {
+    center: { lat: 36.224178, lng: -121.758074 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: { lat: 36.224178, lng: -121.758074 },
+    map: map12,
+    label:"A",
+    title: "CA-1 To Big Sur",
+  })
+  // lake Taho Drive 13
+  map13 = new google.maps.Map(document.getElementById("map13"), {
+    center: { lat: 39.096848, lng: -120.032349 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: { lat: 39.096848, lng: -120.032349 },
+    map: map13,
+    label:"A",
+    title: "Drive through the Mojave",
+   })
+  //  Oregon coast Highway 14
+   map14 = new google.maps.Map(document.getElementById("map14"), {
+    center: { lat: 44.187126, lng: -124.114609 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: { lat: 44.187126, lng: -124.114609 },
+    map: map14,
+    label:"A",
+    title: "Oregon coast Highway",
+   })
+  //  Hurricane Ridge 15
+   map15 = new google.maps.Map(document.getElementById("map15"), {
+    center: { lat: 47.9331, lng: -123.4679 },
+    zoom: 8,
+  });
+  new google.maps.Marker({
+    position: { lat: 47.9331, lng: -123.4679 },
+    map: map15,
+    label:"A",
+    title: "Hurricane Ridge",
+   })
+  }
 // lists of states
 const states = ['FL', 'TX', 'MS', 'AL', 'LA', 
-                'GA', 'AZ', 'NV', 'UT'
+                'GA', 'AZ', 'NV', 'UT','CA', 'OR', 'WA'
 ];
 
 // value for the entier card contaienr
@@ -331,6 +391,11 @@ let azEl = document.querySelector("#az");
 let az2El = document.querySelector("#az2");
 let nvEl = document.querySelector("#nv");
 let utEl = document.querySelector("#ut");
+let caEl = document.querySelector("#ca");
+let ca2El = document.querySelector("#ca2");
+let ca3El = document.querySelector("#ca3");
+let orEl = document.querySelector("#or");
+let waEl = document.querySelector("#wa");
 
 // function that display only the card for the specific state.
 function getStates(){
@@ -346,6 +411,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }else if(a === states[1]){
     txEl.style.display = 'flex';
@@ -358,6 +428,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[2]){
@@ -371,6 +446,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[3]){
@@ -384,6 +464,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }
   else if(a === states[4]){
@@ -397,6 +482,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[5]){
     laEl.style.display = 'none';
@@ -409,6 +499,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[6]){
     laEl.style.display = 'none';
@@ -421,6 +516,11 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'none';
     az2El.style.display = 'flex';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[7]){
     laEl.style.display = 'none';
@@ -433,6 +533,11 @@ function getStates(){
     nvEl.style.display = 'flex';
     utEl.style.display = 'none';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
     return true;
   }  else if(a === states[8]){
     laEl.style.display = 'none';
@@ -445,6 +550,62 @@ function getStates(){
     nvEl.style.display = 'none';
     utEl.style.display = 'flex';
     az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
+    return true;
+  }  else if(a === states[9]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    caEl.style.display = 'flex';
+    ca2El.style.display = 'flex';
+    ca3El.style.display = 'flex';
+    orEl.style.display = 'none';
+    waEl.style.display = 'none';
+    return true;
+  }  else if(a === states[10]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'flex';
+    waEl.style.display = 'none';
+    return true;
+  }  else if(a === states[11]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    caEl.style.display = 'none';
+    ca2El.style.display = 'none';
+    ca3El.style.display = 'none';
+    orEl.style.display = 'none';
+    waEl.style.display = 'flex';
     return true;
   }else if(a !== states){
     alert("Please use two letter state input, try again.")
