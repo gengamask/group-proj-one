@@ -211,7 +211,7 @@ function initMap() {
     position: { lat: 25.196361728587775, lng: -80.41343973263618 },
     map: map1,
     label:"A",
-    title: "Tail of the Dragon",
+    title: "US-a, Key West",
   })
     //LightHouse Trail
     map2 = new google.maps.Map(document.getElementById("map2"), {
@@ -222,7 +222,7 @@ function initMap() {
     position: { lat: 34.94753084095934, lng: -101.6887235458197 },
     map: map2,
     label:"A",
-    title: "Blood Mountain",
+    title: "Lighthouse Trail Palo Duro",
   })
     //Gulfport Seenic Byway
   map3 = new google.maps.Map(document.getElementById("map3"), {
@@ -233,7 +233,7 @@ function initMap() {
     position: { lat: 30.38956102702961, lng: -89.00039092773201 },
     map: map3,
     label:"A",
-    title: "Blood Mountain",
+    title: "Gulfport Scenic Byway",
   })
   // Talladega Scenic Drive
   map4 = new google.maps.Map(document.getElementById("map4"), {
@@ -244,7 +244,7 @@ function initMap() {
     position: { lat: 33.526130306735205, lng: -85.74859794538455 },
     map: map4,
     label:"A",
-    title: "Blood Mountain",
+    title: "Talladega Scenic Drive",
   })
   // The Great River Road
   map5 = new google.maps.Map(document.getElementById("map5"), {
@@ -255,69 +255,69 @@ function initMap() {
     position: { lat: 30.207392650804636, lng: -90.94551441746164 },
     map: map5,
     label:"A",
-    title: "Blood Mountain",
+    title: "Great River Road",
   });
-  // Key West
+  // Atlanta road
   map6 = new google.maps.Map(document.getElementById("map6"), {
-    center: { lat: 25.196361728587775, lng: -80.41343973263618 },
+    center: { lat:33.74332510984891, lng:-84.39234089879041},
     zoom: 8,
   });
   new google.maps.Marker({
-    position: {lat: 25.196361728587775, lng : -80.41343973263618 },
+    position: {lat:33.74332510984891, lng :-84.39234089879041},
     map: map6,
     label:"A",
-    title: "Tail of the Dragon",
+    title: "Atlanta road",
 })
-    //Atlanta road
+    //Open Road
     map7 = new google.maps.Map(document.getElementById("map7"), {
-    center: { lat:26.670876 , lng:-69.993684},
+    center: { lat:35.6391755685948, lng:-112.12485375214233},
     zoom: 8,
   }); 
-  
   new google.maps.Marker({
-    position: { lat:26.670876  , lng:-69.993684},
+    position: { lat:35.6391755685948, lng:-112.12485375214233},
     map: map7,
     label:"A",
-    title: "Blood Mountain",
+    title: "Open Road",
   })
-    //Open road
+    //Red rock red-rock-gateway-to-sedona
   map8 = new google.maps.Map(document.getElementById("map8"), {
-    center: { lat:37.644402, lng:-65.516008},
+    center: { lat:34.89549875477629, lng:-111.75201785045047},
     zoom: 8,
   }); 
   new google.maps.Marker({
-    position: { lat:37.644402, lng:-65.516008 },
+    position: { lat:34.89549875477629, lng:-111.75201785045047},
     map: map8,
     label:"A",
-    title: "Blood Mountain",
+    title: "Red rock red-rock-gateway-to-sedona",
   })
   // Tall pine
   map9 = new google.maps.Map(document.getElementById("map9"), {
-    center: { lat:33.843970 , lng: -65.516008},
+    center: { lat:33.84630481562373, lng:-110.96881297598705},
     zoom: 8,
   }); 
   new google.maps.Marker({
-    position: { lat: 33.843970, lng: -110.968545},
+    position: { lat:33.84630481562373, lng:-110.96881297598705},
     map: map9,
     label:"A",
-    title: "Blood Mountain",
+    title: "Tall Pines Scenic Road",
   })
 
-  // Utah - why 12
+  // Utah - hwy 12
   map10 = new google.maps.Map(document.getElementById("map10"), {
-    center: { lat: 33.914237, lng: -115.298147},
+    center: { lat:37.760801254849426, lng:-111.69645660284512},
     zoom: 8,
   }); 
   new google.maps.Marker({
-    position: { lat:33.914237 , lng:-115.298147},
+    position: { lat:37.760801254849426, lng:-111.69645660284512},
     map: map10,
     label:"A",
-    title: "Blood Mountain",
+    title: "Utah HWY 12",
   })
 }
 
 // lists of states
-const states = ['FL', 'TX', 'MS', 'AL', 'LA'
+const states = ['FL', 'TX', 'MS', 'AL', 'LA', 
+                'GA', 'AZ', 'NV', 'UT'
 ];
 
 // value for the entier card contaienr
@@ -326,6 +326,11 @@ let txEl = document.querySelector("#tx");
 let msEl = document.querySelector("#ms");
 let alEl = document.querySelector("#al");
 let laEl = document.querySelector("#la");
+let gaEl = document.querySelector("#ga");
+let azEl = document.querySelector("#az");
+let az2El = document.querySelector("#az2");
+let nvEl = document.querySelector("#nv");
+let utEl = document.querySelector("#ut");
 
 // function that display only the card for the specific state.
 function getStates(){
@@ -336,6 +341,11 @@ function getStates(){
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
     return true;
   }else if(a === states[1]){
     txEl.style.display = 'flex';
@@ -343,6 +353,11 @@ function getStates(){
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
     return true;
   }
   else if(a === states[2]){
@@ -351,6 +366,11 @@ function getStates(){
     txEl.style.display = 'none';
     alEl.style.display = 'none';
     laEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
     return true;
   }
   else if(a === states[3]){
@@ -359,6 +379,11 @@ function getStates(){
     msEl.style.display = 'none';
     txEl.style.display = 'none';
     laEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
     return true;
   }
   else if(a === states[4]){
@@ -367,6 +392,59 @@ function getStates(){
     msEl.style.display = 'none';
     alEl.style.display = 'none';
     txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    return true;
+  }  else if(a === states[5]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'flex';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    return true;
+  }  else if(a === states[6]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'flex';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'none';
+    az2El.style.display = 'flex';
+    return true;
+  }  else if(a === states[7]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'flex';
+    utEl.style.display = 'none';
+    az2El.style.display = 'none';
+    return true;
+  }  else if(a === states[8]){
+    laEl.style.display = 'none';
+    flEl.style.display = 'none';
+    msEl.style.display = 'none';
+    alEl.style.display = 'none';
+    txEl.style.display = 'none';
+    gaEl.style.display = 'none';
+    azEl.style.display = 'none';
+    nvEl.style.display = 'none';
+    utEl.style.display = 'flex';
+    az2El.style.display = 'none';
     return true;
   }else if(a !== states){
     alert("Please use two letter state input, try again.")
