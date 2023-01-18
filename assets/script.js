@@ -1,12 +1,3 @@
-
-//Get API Keys for Maps and Weather
-// read API data for WX and Map and display on each card based on location
-
-// create getWeather() to pull weather data
-//create displayWeather() to display weather on the card
-//create function and call function with console log at the minimum
-//ideally link function to the card
-
 var apiKey = 'e22a952731360f3f21865b6d5114ce96';
 var lon;
 var lat;
@@ -14,7 +5,7 @@ var units;
 var searchButton = document.querySelector('#searchActivate');
 var searchInput = document.querySelector('#theSearch');
 var homeButton = document.querySelector('#homeButton');
-
+//event listener for the main search button
 searchButton.addEventListener('click', function(event){
   event.preventDefault();
   if(getStates()){
@@ -28,7 +19,7 @@ searchButton.addEventListener('click', function(event){
 homeButton.addEventListener("click", function(event){
   window.location.reload();
 })
-
+//saves valid search results in local storage
 function saveToLocalStorage(searchValue){
   var number = JSON.parse(localStorage.getItem("searchNumber"));
   if(number !== undefined && number !== null){
@@ -41,7 +32,7 @@ function saveToLocalStorage(searchValue){
     localStorage.setItem(`search${number}`, JSON.stringify(searchValue));
   }
 }
-
+//retrieves key value pairs in local storage
 function retrieveLocalStorage(){
   var number = JSON.parse(localStorage.getItem("searchNumber"));
   dropDownEl = document.querySelector('#dropDown');
@@ -57,7 +48,7 @@ function retrieveLocalStorage(){
     }
   }
 }
-
+//API function to get weather information from openweathermap
 function getWeather(lat, lon, cardNumber) {
     lat = lat;
     lon = lon;
@@ -117,7 +108,7 @@ function getWeather(lat, lon, cardNumber) {
           alert('Unable to connect to openweathermap API');
         })
 }
-
+//initializes the website
 function init(){
   getWeather(25.1963, -80.4134, 1);
   getWeather(34.9475, -101.68, 2);
@@ -140,13 +131,13 @@ function init(){
 
 
 
-
+// displays the weather icon on each card with 3 day weather outlook
 function displayWeatherIcon(appendEl, iconCode){
   var imgEl = document.createElement("img");
   imgEl.src = `http://openweathermap.org/img/wn/${iconCode}.png`
   appendEl.appendChild(imgEl);
 }
-
+// displays weather for one out of three cards
 function displayDayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcWhen){
   var mark = funcWhen;
   wxDateP = document.createElement('p');
@@ -162,7 +153,7 @@ function displayDayWeather(functIcon, funcTemp, funcWind, funcHumidity, funcWhen
 
 
 }
-
+//calls displayDayWeather for all three cards and creates elements for the card
 function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhen1, functIcon2, funcTemp2, funcWind2, funcHumidity2, funcWhen2, functIcon3, funcTemp3, funcWind3, funcHumidity3, funcWhen3, cardNumber){
   wxEla = document.querySelector(`#wx-${cardNumber}a`);
   wxElb = document.querySelector(`#wx-${cardNumber}b`);
@@ -196,12 +187,6 @@ function displayWeather(functIcon1, funcTemp1, funcWind1, funcHumidity1, funcWhe
   wxDay3Div.appendChild(wxHumP);
 
 };
-
-
-//create getThisMap() to pull map data
-//create displayMap() to display map data
-//create function and call function with console log at the minimum
-//ideally link function to the card
 
 //map indicator
 let map1, map2, map3, map4, map5, map6, map7, map8, map9, map10, map11, map12,map13,map14,map15 ;
@@ -612,4 +597,5 @@ function getStates(){
     return false;
   }
 }
+// initializes the webpage
 init();
