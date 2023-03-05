@@ -25,3 +25,7 @@ Collaborators:
 - [gengamask](https://github.com/gengamask)
 - [bertintshisuaka2](https://github.com/bertintshisuaka2)
 - [Tiel23](https://github.com/Tiel23)
+
+## Screen Shot
+
+<img width="1264" alt="Screenshot 2023-03-05 at 3 23 27 PM" src="https://user-images.githubusercontent.com/109125494/222983991-eb408061-0dbd-4f09-9a0f-c6585cc0eb61.png">
